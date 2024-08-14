@@ -1,0 +1,1 @@
+# BiRefNet-ONNX-Sample
