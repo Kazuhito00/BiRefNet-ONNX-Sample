@@ -7,7 +7,7 @@ deform_conv2dをONNXへ変換するために[masamitsu-murase/deform_conv2d_onnx
 
 # Requirement 
 * OpenCV 4.5.3.56 or later
-* onnxruntime 1.11.0 or later  # 処理時間がかかるため、onnxruntime-gpu を推奨
+* onnxruntime 1.11.0 or later
 * tqdm 4.66.1 or later  # model/birefnet_1024x1024.onnx ファイルダウンロードを行う場合
 
 # Convert
