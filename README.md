@@ -1,5 +1,5 @@
 # BiRefNet-ONNX-Sample
-DIS(Dichotomous Image Segmentation)モデルである[ZhengPeng7/BiRefNet](https://github.com/ZhengPeng7/BiRefNet)のPythonでのONNX変換・推論サンプルです。<br>
+DIS(Dichotomous Image Segmentation)モデルである[ZhengPeng7/BiRefNet](https://github.com/ZhengPeng7/BiRefNet)のPythonでのONNX推論サンプルです。<br>
 変換自体を試したい方は、Google Colaboratory上で[Convert2ONNX.ipynb](Convert2ONNX.ipynb)を使用ください。<br><br>
 deform_conv2dをPyTorchからONNXへ変換するために[masamitsu-murase/deform_conv2d_onnx_exporter](https://github.com/masamitsu-murase/deform_conv2d_onnx_exporter)を利用しています。<br>
 
