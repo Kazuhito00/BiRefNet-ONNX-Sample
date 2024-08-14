@@ -126,21 +126,42 @@ def main() -> None:
     cv2.destroyAllWindows()
 
 
-def download_file(url: str, save_path: str) -> None:
+def download_file(
+    url: str,
+    save_path: str,
+    retries: int = 10,
+) -> None:
     import requests  # type: ignore
+    from tqdm import tqdm  # type: ignore
 
     print('Download:', save_path)
 
-    response = requests.get(url, stream=True)
-    if response.status_code == 200:
-        with open(save_path, 'wb') as file:
-            for chunk in response.iter_content(chunk_size=8192):
-                file.write(chunk)
+    for attempt in range(retries):
+        try:
+            response = requests.get(url, stream=True, timeout=10)
+            response.raise_for_status()
+
+            total_size = int(response.headers.get('content-length', 0))
+            with open(save_path, 'wb') as file, tqdm(
+                    total=total_size,
+                    unit='B',
+                    unit_scale=True,
+                    desc=save_path,
+            ) as pbar:
+                for chunk in response.iter_content(chunk_size=8192):
+                    file.write(chunk)
+                    pbar.update(len(chunk))
+            return
+        except requests.exceptions.RequestException as e:
+            if attempt < retries - 1:
+                time.sleep(5)
+            else:
+                raise
 
 
 if __name__ == '__main__':
     if not os.path.exists('./model/birefnet_1024x1024.onnx'):
-        url = ''
+        url = 'https://github.com/Kazuhito00/BiRefNet-ONNX-Sample/releases/download/v0.0.1/birefnet_1024x1024.onnx'
         save_path = './model/birefnet_1024x1024.onnx'
         download_file(url, save_path)
 
