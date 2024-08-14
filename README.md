@@ -12,6 +12,7 @@ deform_conv2dをONNXへ変換するために[masamitsu-murase/deform_conv2d_onnx
 # Convert
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Kazuhito00/BiRefNet-ONNX-Sample/blob/main/Convert2ONNX.ipynb)<br>
 Colaboratoryでノートブックを開き、上から順に実行してください。<br>
+※ハイメモリモード必須
 
 # Demo
 デモの実行方法は以下です。
